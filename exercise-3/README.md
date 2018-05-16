@@ -1,17 +1,21 @@
 # More advanced recipe work
 
+## TODO: RAKE FILE
+
 ## Dealing with Windows permissions
 
 * In the editor, open ./spec/unit/recipe/default_spec.rb
-* Change line 23-27 to be
+* Change line 22-28 to be
 
 ```
-  context 'When all attributes are default, on the Windows 2012 R2 platform' do
+  context 'When all attributes are default, on the Windows 2016 platform' do
     let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new(platform: 'windows', version: '2012R2')
+      runner = ChefSpec::ServerRunner.new(platform: 'windows', version: '2016')
       runner.converge(described_recipe)
     end
 ```
+
+* Delete lines 33-44
 
 ### Run the almost default spec test
 
@@ -20,9 +24,11 @@
 
 ```
 chef shell-init powershell | iex
-cd ~/chefconf2017/mwwfy
-delivery local unit
+cd ~/chefconf2018/mwwfy
+rake spec
 ```
+
+## TODO: ^ rake spec should be verbose
 
 ### Update the test to check for permissions to be assigned
 
@@ -40,10 +46,11 @@ delivery local unit
     end
 ```
 
+## TODO ^^ check nesting chef_run not defined
 * In the PowerShell session
 
 ```
-delivery local unit
+rake spec
 ```
 
 * In the editor, open ./recipes/default.rb
@@ -61,7 +68,7 @@ end
 * In the PowerShell session
 
 ```
-delivery local unit
+rake spec
 ```
 
 * In the editor, open ./recipes/default.rb
@@ -80,7 +87,7 @@ end
 * In the PowerShell session
 
 ```
-delivery local unit
+rake spec
 kitchen converge
 ```
 
@@ -125,6 +132,8 @@ end
 kitchen converge
 ```
 
+## TODO: Using Chocolatey (Steve)
+
 ## Using DSC resources in Chef recipes
 
 ### Starting with in-box resources
@@ -163,7 +172,7 @@ kitchen converge
 # And if there are multiple versions, dsc_resource requires
 # us to supply a version
 
-x_web_administration_version = '1.17.0.0'
+x_web_administration_version = '1.20.0.0'
 
 powershell_package "xWebAdministration" do
   version x_web_administration_version

@@ -28,7 +28,7 @@ invoke-expression ((New-Object System.Net.WebClient).DownloadString('https://cho
 * In the PowerShell session:
 
 ```
-choco install chefdk --version 1.2.22
+choco install chefdk --version 2.5.3
 ```
 
 ### Use Chocolatey to install VS Code

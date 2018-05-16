@@ -14,8 +14,8 @@ chef shell-init powershell | iex
 * In the PowerShell session:
 
 ```
-mkdir ~/chefconf2017
-cd ~/chefconf2017
+mkdir ~/chefconf2018
+cd ~/chefconf2018
 ```
 
 ### Generate a cookbook to work with
@@ -24,7 +24,7 @@ cd ~/chefconf2017
 
 ```
 # mwwfy - Making Windows Work For You
-chef generate cookbook mwwfy --copyright 'Steven Murawski' --email 'smurawski@chef.io' --license apachev2 --berks
+chef generate cookbook mwwfy --copyright 'Steven Murawski' --email 'steven.murawski@microsoft.com' --license apachev2 --berks
 cd mwwfy
 ```
 
@@ -37,17 +37,13 @@ cp <PATH-TO-LOCAL-EXERCISES-FOLDER>/exercise-2/.kitchen.local.yml -destination .
 ```
 
 * Open .kitchen.local.yml in your editor.
-* Change line 27 to be the url for your assigned test machine (stock 2016 Windows Server image)
-
-```
-      host: chefconf-<YOUR-ASSIGNED-NUMBER-HERE>.southcentralus.cloudapp.azure.com
-```
 
 ### Make sure Test-Kitchen can read our configuration files
 
 * In the PowerShell session:
 
 ```
+chef gem install kitchen-azurerm
 kitchen list
 ```
 
@@ -58,6 +54,9 @@ kitchen list
 ```
 kitchen create
 ```
+
+## TODO: Inspec run (Trevor)
+
 
 ## Adding resources to the recipe
 
@@ -111,7 +110,7 @@ end
 
 ### Create our test
 
-* In your editor, create a file 'default_spec.rb' in the `test\smoke\default` folder
+* In your editor, create a file 'default_spec.rb' in the `test\integration\default` folder
 * Replace the existing tests with
 
 ```

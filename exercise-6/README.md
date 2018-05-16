@@ -2,14 +2,14 @@
 
 ## Connecting to a Chef Server with a self-signed or internal cert
 
-* Copy the chef-repo directory from the cloned repository to `~/chefconf2017/`
+* Copy the chef-repo directory from the cloned repository to `~/chefconf2018/`
 
 * Open a PowerShell session as an administrator
 * In the PowerShell session:
 
 ```
 chef shell-init powershell | iex
-cd ~/chefconf2017/chef-repo
+cd ~/chefconf2018/chef-repo
 knife client list # should fail
 ```
 
@@ -26,7 +26,7 @@ knife client list
 * Right click on the Personal store for the local machine
 * Select All Tasks
 * Select Import
-* Browse to `~/chefconf2017/chef-repo/.chef/trusted_certs`
+* Browse to `~/chefconf2018/chef-repo/.chef/trusted_certs`
 * Select `chefmurawski_southcentralus_cloudapp_azure_com.crt`
 
 * OR

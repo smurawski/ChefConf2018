@@ -7,7 +7,7 @@
 
 ```
 chef shell-init powershell | iex
-cd ~/chefconf2017/mwwfy
+cd ~/chefconf2018/mwwfy
 chef generate attribute . local
 ```
 

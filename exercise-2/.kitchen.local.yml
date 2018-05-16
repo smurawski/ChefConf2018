@@ -1,13 +1,13 @@
 ---
 driver:
-  name: proxy
-  port: 5985
-  reset_command: "exit 0"
+  name: azurerm
+  subscription_id: <%= ENV['AZURE_SUBSCRIPTION_ID'] %>
+  machine_size: 'Standard_DS2_v2'
+  location: 'westus'
 
 transport:
   name: winrm
-  username: 'ChefPowerShell'
-  password: 'P2ssw0rd!'
+
 
 provisioner:
   wait_for_retry: 90
@@ -20,4 +20,5 @@ verifier:
 platforms:
   - name: windows-server-2016
     driver:
-      host: chefconf-<CHANGE_ME>.centralus.cloudapp.azure.com
+      image_urn: MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest
+
