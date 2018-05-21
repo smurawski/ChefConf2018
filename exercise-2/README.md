@@ -55,7 +55,22 @@ kitchen list
 kitchen create
 ```
 
-## TODO: Inspec run (Trevor)
+## Scan our machine for compliance against DevSec Windows Baseline
+
+### Get your machine details
+* Open the kitchen file in your editor ('/.kitchen/default-windows-server-2016.yml')
+* Grab the username / password / address
+
+### View the DevSec Windows Baseline
+* https://github.com/dev-sec/windows-baseline 
+
+### Scan your machine with the Baseline InSpec profile
+* In the PowerShell session:
+
+```
+inspec exec https://github.com/dev-sec/windows-baseline -t winrm://[username]@[host] --password [password]
+```
+* Review your results and note the passes and failures on a base Windows 2016 VM
 
 
 ## Adding resources to the recipe
@@ -128,3 +143,53 @@ end
 ```
 kitchen verify
 ```
+
+## Remediating one of our Baseline Compliane Failures
+
+### Adding a registry key resource to our recipe
+* In your editor open your default recipe ('default.rb')
+* Add the following to the end of your recipe
+
+``` 
+registry_key "HKLM\\Software\\Policies\\Microsoft\\Internet Explorer\\Main" do
+  values [{
+    name: "Isolation64Bit",
+    type: :dword,
+    data: 0
+  }]
+  action :create
+end
+```
+
+* Save 'default.rb'
+
+### Write InSpec test to validate our change
+* In your editor, open 'default_spec.rb' in the `test\integration\default` folder
+* Add this test to the end of the file
+
+```
+  describe registry_key('HKLM\Software\Policies\Microsoft\Internet Explorer\Main') do
+    it { should exist }
+    its('Isolation64Bit') { should eq 1 }
+  end
+```
+
+* Save 'default_spec.rb'
+
+### Converge and verify our machine
+
+* In the PowerShell session
+```
+kitchen converge
+kitchen verify
+```
+
+### Re-run Compliance Scan to see passing control
+* In the PowerShell session
+```
+inspec exec https://github.com/dev-sec/windows-baseline -t winrm://[username]@[host] --password [password]
+```
+* Note that the control `windows-ie-101: IE 64-bit tab` is now passing
+
+
+
