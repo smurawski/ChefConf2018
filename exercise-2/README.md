@@ -55,22 +55,7 @@ kitchen list
 kitchen create
 ```
 
-## Scan our machine for compliance against DevSec Windows Baseline
 
-### Get your machine details
-* Open the kitchen file in your editor ('/.kitchen/default-windows-server-2016.yml')
-* Grab the username / password / address
-
-### View the DevSec Windows Baseline
-* https://github.com/dev-sec/windows-baseline 
-
-### Scan your machine with the Baseline InSpec profile
-* In the PowerShell session:
-
-```
-inspec exec https://github.com/dev-sec/windows-baseline -t winrm://[username]@[host] --password [password]
-```
-* Review your results and note the passes and failures on a base Windows 2016 VM
 
 
 ## Adding resources to the recipe
@@ -122,6 +107,23 @@ end
 * Save 'default.rb'
 
 ## Verify
+
+## Scan our machine for compliance against DevSec Windows Baseline
+
+### Get your machine details
+* Open the kitchen file in your editor ('/.kitchen/default-windows-server-2016.yml')
+* Grab the username / password / address
+
+### View the DevSec Windows Baseline
+* https://github.com/dev-sec/windows-baseline 
+
+### Scan your machine with the Baseline InSpec profile
+* In the PowerShell session:
+
+```
+inspec exec https://github.com/dev-sec/windows-baseline -t winrm://[username]@[host] --password [password]
+```
+* Review your results and note the passes and failures on a base Windows 2016 VM
 
 ### Create our test
 
