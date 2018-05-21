@@ -108,23 +108,6 @@ end
 
 ## Verify
 
-## Scan our machine for compliance against DevSec Windows Baseline
-
-### Get your machine details
-* Open the kitchen file in your editor ('/.kitchen/default-windows-server-2016.yml')
-* Grab the username / password / address
-
-### View the DevSec Windows Baseline
-* https://github.com/dev-sec/windows-baseline 
-
-### Scan your machine with the Baseline InSpec profile
-* In the PowerShell session:
-
-```
-inspec exec https://github.com/dev-sec/windows-baseline -t winrm://[username]@[host] --password [password]
-```
-* Review your results and note the passes and failures on a base Windows 2016 VM
-
 ### Create our test
 
 * In your editor, create a file 'default_spec.rb' in the `test\integration\default` folder
@@ -147,6 +130,24 @@ kitchen verify
 ```
 
 ## Remediating one of our Baseline Compliane Failures
+
+### Scan our machine for compliance against DevSec Windows Baseline
+
+#### Get your machine details
+* Open the kitchen file in your editor ('/.kitchen/default-windows-server-2016.yml')
+* Grab the username / password / address
+
+#### View the DevSec Windows Baseline
+* https://github.com/dev-sec/windows-baseline 
+
+#### Scan your machine with the Baseline InSpec profile
+* In the PowerShell session:
+
+```
+inspec exec https://github.com/dev-sec/windows-baseline -t winrm://[username]@[host] --password [password]
+```
+* Review your results and note the passes and failures on a base Windows 2016 VM
+
 
 ### Adding a registry key resource to our recipe
 * In your editor open your default recipe ('default.rb')
