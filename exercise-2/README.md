@@ -33,7 +33,8 @@ cd mwwfy
 * Copy the .kitchen.local.yml to your cookbook directory
 
 ```
-cp <PATH-TO-LOCAL-EXERCISES-FOLDER>/exercise-2/.kitchen.local.yml -destination .
+cp ~/lab/chefconf2018/exercise-2/.kitchen.local.yml -destination .
+
 ```
 
 * Open .kitchen.local.yml in your editor.
@@ -54,9 +55,6 @@ kitchen list
 ```
 kitchen create
 ```
-
-
-
 
 ## Adding resources to the recipe
 

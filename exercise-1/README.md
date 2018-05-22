@@ -119,7 +119,10 @@ code --install-extension Pendrica.Chef
 ```
 {
     "files.eol": "\n",
-    "editor.trimAutoWhitespace": true
+    "editor.trimAutoWhitespace": true,
+    "[ruby]": {
+        "editor.tabSize": 2
+    }
 }
 ```
 
