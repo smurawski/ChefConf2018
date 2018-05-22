@@ -20,7 +20,7 @@ Set-ExecutionPolicy RemoteSigned
 * In the PowerShell session:
 
 ```
-invoke-expression ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+invoke-expression (invoke-restmethod 'https://chocolatey.org/install.ps1')
 ```
 
 ### Use Chocolatey to install ChefDk
@@ -30,6 +30,13 @@ invoke-expression ((New-Object System.Net.WebClient).DownloadString('https://cho
 ```
 choco install chefdk --version 2.5.3
 ```
+
+### Use Chocolatey to install git
+
+* In the PowerShell session:
+
+```
+choco install git
 
 ### Use Chocolatey to install VS Code
 
