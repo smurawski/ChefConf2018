@@ -156,7 +156,7 @@ registry_key "HKLM\\Software\\Policies\\Microsoft\\Internet Explorer\\Main" do
   values [{
     name: "Isolation64Bit",
     type: :dword,
-    data: 0
+    data: 1
   }]
   action :create
   recursive true
@@ -172,7 +172,7 @@ end
 ```
   describe registry_key('HKLM\Software\Policies\Microsoft\Internet Explorer\Main') do
     it { should exist }
-    its('Isolation64Bit') { should eq 0 }
+    its('Isolation64Bit') { should eq 1 }
   end
 ```
 
