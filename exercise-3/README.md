@@ -1,6 +1,5 @@
 # More advanced recipe work
 
-## TODO: RAKE FILE
 
 ## Dealing with Windows permissions
 
@@ -25,10 +24,9 @@
 ```
 chef shell-init powershell | iex
 cd ~/chefconf2018/mwwfy
+cp <PATH-TO-LOCAL-EXERCISES-FOLDER>/exercise-3/Rakefile -destination .
 rake spec
 ```
-
-## TODO: ^ rake spec should be verbose
 
 ### Update the test to check for permissions to be assigned
 
@@ -132,7 +130,14 @@ end
 kitchen converge
 ```
 
-## TODO: Using Chocolatey (Steve)
+## Using Chocolatey
+
+* In the editor, open ./recipes/default.rb
+* Add the `chocolatey_package` resource to the bottom of the recipe
+
+```
+chocolatey_package 'habitat'
+```
 
 ## Using DSC resources in Chef recipes
 
