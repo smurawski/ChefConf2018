@@ -38,5 +38,6 @@ knife client list
 * In the PowerShell session:
 
 ```
-knife bootstrap windows winrm chefconf-{YOUR NUMBER HERE}.southcentralus.cloudapp.azure.com -x ChefPowerShell -P P2ssw0rd! -N chefconf-{YOUR NUMBER HERE}
+cat .\.kitchen\default-windows-server-2016.yml
+knife bootstrap windows winrm {YOUR HOSTNAME HERE}  -x azure -P P2ssw0rd -N chefconf-{YOUR GROUP NUMBER HERE}-{YOUR NUMBER HERE}
 ```

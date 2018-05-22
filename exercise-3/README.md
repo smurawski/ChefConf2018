@@ -24,27 +24,26 @@
 ```
 chef shell-init powershell | iex
 cd ~/chefconf2018/mwwfy
-cp <PATH-TO-LOCAL-EXERCISES-FOLDER>/exercise-3/Rakefile -destination .
+cp ~/lab/chefconf2018/exercise-3/Rakefile -destination .
 rake spec
 ```
 
 ### Update the test to check for permissions to be assigned
 
 * In the editor, edit ./spec/unit/recipe/default_spec.rb
-* Just under line 31, add
+* Just under line 30, add
 
 ```
     context 'file[c:\hello.txt]' do
       it 'sets Read for Everyone' do
         expect(chef_run).to create_file('c:\hello.txt').with(
-          rights: [{ permissions: :full_control, principals: 'ChefPowerShell'},
+          rights: [{ permissions: :full_control, principals: 'azure'},
                    { permissions: :read, principals: 'Everyone' }]
         )
       end
     end
 ```
 
-## TODO ^^ check nesting chef_run not defined
 * In the PowerShell session
 
 ```
@@ -77,7 +76,7 @@ file 'c:\hello.txt' do
   content "Chef's gonna reboot your server. Ha Ha."
   action :create
   notifies :reboot_now, 'reboot[Restarting for fun and profit]', :immediately
-  rights :full_control, 'ChefPowerShell'
+  rights :full_control, 'azure'
   rights :read, 'Everyone'
 end
 ```

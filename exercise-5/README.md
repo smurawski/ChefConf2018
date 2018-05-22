@@ -15,7 +15,7 @@ chef generate attribute . local
 * Add
 
 ```
-default['mwwfy']['alternate_user'] = 'ChefPowerShell2'
+default['mwwfy']['alternate_user'] = 'azure2'
 default['mwwfy']['alternate_password'] = 'P2ssw0rd!'
 ```
 
@@ -27,7 +27,7 @@ default['mwwfy']['alternate_password'] = 'P2ssw0rd!'
 ```
 transport:
   name: winrm
-  username: 'ChefPowerShell'
+  username: 'azure'
   password: 'P2ssw0rd!'
   elevated: true
   elevated_username: SYSTEM
