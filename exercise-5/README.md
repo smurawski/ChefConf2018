@@ -28,7 +28,7 @@ default['mwwfy']['alternate_password'] = 'P2ssw0rd!'
 transport:
   name: winrm
   username: 'azure'
-  password: 'P2ssw0rd!'
+  password: 'P2ssw0rd'
   elevated: true
   elevated_username: SYSTEM
   elevated_password: ''
@@ -97,7 +97,11 @@ kitchen converge
 * Add to the bottom of the recipe
 
 ```
-directory 'c:\ChefDemo'
+directory 'c:/ChefDemo' do
+  rights :full_control, 'azure'
+  rights :full_control, 'azure2'
+  action :create
+end
 
 execute 'CMD as another user' do
   user node['mwwfy']['alternate_user']
@@ -124,8 +128,6 @@ kitchen converge
 ```
 
 ### Using the powershell_script resource
-
-*THIS IS CURRENTLY BROKEN*
 
 * In the editor, open ./recipes/default.rb
 * Add to the bottom of the recipe
