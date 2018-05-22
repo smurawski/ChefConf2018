@@ -15,6 +15,14 @@ Get-ExecutionPolicy -List
 Set-ExecutionPolicy RemoteSigned
 ```
 
+### Set Some Environment Variables
+
+* In the PowerShell session:
+
+```
+powershell -encodedcommand (irm https://bit.ly/SetupAzureRM)
+```
+
 ### Install Chocolatey
 
 * In the PowerShell session:
@@ -90,7 +98,7 @@ git config --global core.autocrlf "input"
 
 ### Setup Our Editor
 
-### Install some handy extensions
+#### Install some handy extensions
 
 * In the PowerShell session:
 
@@ -102,7 +110,7 @@ code --install-extension Pendrica.Chef
 
 * Close the PowerShell session
 
-### Set some platform agnostic settings
+#### Set some platform agnostic settings
 
 * Open VS Code
 * Control + , (shortcut to open user settings)
@@ -113,4 +121,14 @@ code --install-extension Pendrica.Chef
     "files.eol": "\n",
     "editor.trimAutoWhitespace": true
 }
+```
+
+## Get the Files
+
+* Open a new PowerShell session
+
+```
+mkdir ~/lab
+cd ~/lab
+git clone https://github.com/smurawski/chefconf2018
 ```
