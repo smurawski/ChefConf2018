@@ -37,6 +37,7 @@ choco install chefdk --version 2.5.3
 
 ```
 choco install git
+```
 
 ### Use Chocolatey to install VS Code
 
