@@ -127,7 +127,7 @@ end
 kitchen verify
 ```
 
-## Remediating one of our Baseline Compliane Failures
+## Remediating one of our Baseline Compliance Failures
 
 ### Scan our machine for compliance against DevSec Windows Baseline
 
@@ -136,7 +136,7 @@ kitchen verify
 * Grab the username / password / address
 
 #### View the DevSec Windows Baseline
-* https://github.com/dev-sec/windows-baseline 
+* https://github.com/dev-sec/windows-baseline
 
 #### Scan your machine with the Baseline InSpec profile
 * In the PowerShell session:
@@ -151,7 +151,7 @@ inspec exec https://github.com/dev-sec/windows-baseline -t winrm://[username]@[h
 * In your editor open your default recipe ('default.rb')
 * Add the following to the end of your recipe
 
-``` 
+```
 registry_key "HKLM\\Software\\Policies\\Microsoft\\Internet Explorer\\Main" do
   values [{
     name: "Isolation64Bit",
@@ -159,6 +159,7 @@ registry_key "HKLM\\Software\\Policies\\Microsoft\\Internet Explorer\\Main" do
     data: 0
   }]
   action :create
+  recursive true
 end
 ```
 
@@ -171,7 +172,7 @@ end
 ```
   describe registry_key('HKLM\Software\Policies\Microsoft\Internet Explorer\Main') do
     it { should exist }
-    its('Isolation64Bit') { should eq 1 }
+    its('Isolation64Bit') { should eq 0 }
   end
 ```
 
@@ -191,6 +192,3 @@ kitchen verify
 inspec exec https://github.com/dev-sec/windows-baseline -t winrm://[username]@[host] --password [password]
 ```
 * Note that the control `windows-ie-101: IE 64-bit tab` is now passing
-
-
-
