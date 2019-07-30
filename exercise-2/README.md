@@ -104,6 +104,14 @@ end
 
 * Save 'default.rb'
 
+### Converge
+
+* In the PowerShell session:
+
+```
+kitchen converge
+```
+
 ## Verify
 
 ### Create our test
